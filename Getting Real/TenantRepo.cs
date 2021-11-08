@@ -6,12 +6,7 @@ namespace Getting_Real
 {
     public class TenantRepo
     {
-        private List<Tenant> _Tenants;
-        public List<Tenant> Tenants
-        {
-            get { return _Tenants; }
-            set { _Tenants = value; }
-        }
+        private List<Tenant> tenants;
 
         private string path = "../../../Tenants.txt";
 
@@ -20,13 +15,18 @@ namespace Getting_Real
             Load();
         }
 
+        public List<Tenant> GetListOfTenants()
+        {
+            return tenants;
+        }
+
         public void Save()
         {
             using (StreamWriter writer = new(path))
             {
-                for (int i = 0; i < Tenants.Count; i++)
+                for (int i = 0; i < tenants.Count; i++)
                 {
-                    writer.WriteLine(Tenants[i]);
+                    writer.WriteLine(tenants[i]);
                 }
             }
         }
@@ -35,12 +35,12 @@ namespace Getting_Real
         {
             using (StreamReader reader = new(path))
             {
-                Tenants = new List<Tenant>();
+                tenants = new List<Tenant>();
 
                 string line;
                 while ((line = reader.ReadLine()) != null) {
                     string[] data = line.Split(',');
-                    Tenants.Add(new Tenant(data[0], data[1], data[2], DateTime.Parse(data[3]), DateTime.Parse(data[4])));
+                    tenants.Add(new Tenant(data[0], data[1], data[2], DateTime.Parse(data[3]), DateTime.Parse(data[4])));
                 }
             }
         }
