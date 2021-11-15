@@ -108,7 +108,7 @@ namespace Getting_Real
 
             Console.Write("Full Name: ");
             Name = Console.ReadLine();
-                tenant = TenantRepo.FindTenant(Name); //Hvor kan vi finde tenant så jeg kan tjekke om de allerede eksistere. Har lavet en metode til det men måske mangler der noget.
+                //tenant = TenantRepo.FindTenant(Name); //Hvor kan vi finde tenant så jeg kan tjekke om de allerede eksistere. Har lavet en metode til det men måske mangler der noget.
                 if (tenant != null)
                     Console.WriteLine("Tenant already exist");
             //} while (tenant != null);
